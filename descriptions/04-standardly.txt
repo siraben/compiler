@@ -1,0 +1,23 @@
+Semantics
+- lambda calculus
+- call-by-value
+- continuations
+- mutable cells
+- I/O
+
+Syntax
+- Lisp
+- strings
+- numbers
+- booleans
+- quote
+- macro calls
+
+Primitives
+- pure Scheme primitives
+- impure Scheme primitives
+- hygienic macros
+
+Compilation process
+- CPS transform
+- Kiselyov bracket abstraction

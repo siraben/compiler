@@ -1,0 +1,16 @@
+Semantics
+- lambda calculus
+- call-by-value
+
+Syntax
+- Lisp
+- strings
+- numbers
+- booleans
+- quote
+
+Primitives
+- pure Scheme primitives
+
+Compilation process
+- Kiselyov bracket abstraction
