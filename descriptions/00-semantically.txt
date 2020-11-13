@@ -1,0 +1,12 @@
+Semantics
+- lambda calculus
+- call-by-need
+
+Syntax
+- Haskell
+
+Primitives
+- extended SKI combinators
+
+Compilation process
+- Kiselyov bracket abstraction

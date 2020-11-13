@@ -1,0 +1,21 @@
+Semantics
+- lambda calculus
+- call-by-value
+- continuations
+- mutable cells
+- I/O
+
+Syntax
+- Lisp
+- strings
+- numbers
+- booleans
+- quote
+
+Primitives
+- pure Scheme primitives
+- impure Scheme primitives
+
+Compilation process
+- CPS transform
+- Kiselyov bracket abstraction
