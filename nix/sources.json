@@ -1,4 +1,40 @@
 {
+    "m2-planet": {
+        "branch": "master",
+        "description": "The PLAtform NEutral Transpiler",
+        "homepage": null,
+        "owner": "oriansj",
+        "repo": "m2-planet",
+        "rev": "0ed81de9e12ea292156c0cadcc95df27000e75d1",
+        "sha256": "077s22izf0ya9hjncd0f9j5z5q3cihs9h96qqv62k00ffxjl7ngh",
+        "type": "tarball",
+        "url": "https://github.com/oriansj/m2-planet/archive/0ed81de9e12ea292156c0cadcc95df27000e75d1.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "mes-m2": {
+        "branch": "master",
+        "description": "Making Mes.c M2-Planet friendly",
+        "homepage": "",
+        "owner": "oriansj",
+        "repo": "mes-m2",
+        "rev": "1cc6aceea11dea0e4f27d8fcd47935e376f5bf74",
+        "sha256": "0wkydxk06cgmxq1mg3h1qg8p880r2ssdili8nj5293hk258pi3lj",
+        "type": "tarball",
+        "url": "https://github.com/oriansj/mes-m2/archive/1cc6aceea11dea0e4f27d8fcd47935e376f5bf74.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "mescc-tools": {
+        "branch": "master",
+        "description": "Bootstrapping tools for Janneke's MES",
+        "homepage": null,
+        "owner": "oriansj",
+        "repo": "mescc-tools",
+        "rev": "2108ac4966268f5589677708eda1fe3740670763",
+        "sha256": "1asvlkrvf2kk7hn8wp6p7rmsg2p3dijk2l709j4hklyljl1zj0bp",
+        "type": "tarball",
+        "url": "https://github.com/oriansj/mescc-tools/archive/2108ac4966268f5589677708eda1fe3740670763.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",
@@ -17,10 +53,10 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0f8a31b992b6892dd075bac8533955a9b92ac9df",
-        "sha256": "11013clgxalivmmh3m4cglg51sxms5kgbqh2bqdhcngra3cqnlsy",
+        "rev": "929768261a3ede470eafb58d5b819e1a848aa8bf",
+        "sha256": "0zi54vbfi6i6i5hdd4v0l144y1c8rg6hq6818jjbbcnm182ygyfa",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/0f8a31b992b6892dd075bac8533955a9b92ac9df.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/929768261a3ede470eafb58d5b819e1a848aa8bf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

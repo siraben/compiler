@@ -3,6 +3,8 @@
 }:
 let
   # Nixpkgs extended with bootstrappable related packages
-  bootstrappable-pkgs = import ./pkgs { };
+  bootstrappable-pkgs = import ./pkgs {
+    overlays = [ (import ./latest.nix sources) ];
+  };
 in
 bootstrappable-pkgs
