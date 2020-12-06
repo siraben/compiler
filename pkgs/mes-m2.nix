@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub, mescc-tools }:
+{ stdenv, fetchFromGitHub, gcc, mescc-tools }:
 
 stdenv.mkDerivation rec {
   name = "mes-m2";
@@ -9,6 +9,6 @@ stdenv.mkDerivation rec {
     sha256 = "0h3wivrvwz8czilpii155xxkhm15hfhawmiih248ggkanpjmkcvm";
   };
 
-  nativeBuildInputs = [ mescc-tools ];
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  nativeBuildInputs = [ mescc-tools gcc ];
+  makeFlags = [ "PREFIX=${placeholder "out"}" "CC=gcc" ];
 }

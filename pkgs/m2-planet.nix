@@ -1,4 +1,4 @@
-{ stdenv, fetchFromGitHub }:
+{ stdenv, fetchFromGitHub, gcc, git }:
 
 stdenv.mkDerivation rec {
   name = "m2-planet";
@@ -10,5 +10,7 @@ stdenv.mkDerivation rec {
     sha256 = "0mklakrrn7f0n57kfykv46f24d5a0spwx411067rl7qh0hyd404s";
   };
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  nativeBuildInputs = [ gcc git ];
+
+  makeFlags = [ "PREFIX=${placeholder "out"}" "CC=gcc" ];
 }
