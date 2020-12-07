@@ -1,5 +1,10 @@
-{ stdenv, fetchgit, git, gcc }:
+{ stdenv, fetchgit, git, gcc, targetPlatform, buildPlatform }:
 
+let
+  targetPrefix = stdenv.lib.optionalString
+    (targetPlatform != buildPlatform)
+    "${targetPlatform.config}-";
+in
 stdenv.mkDerivation {
   pname = "mescc-tools";
   version = "unstable-2020-12-05";
@@ -17,5 +22,5 @@ stdenv.mkDerivation {
     cp bin/* $out/bin
   '';
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  makeFlags = [ "PREFIX=${placeholder "out"}" "CC=${targetPrefix}gcc" ];
 }

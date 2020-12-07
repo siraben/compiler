@@ -1,4 +1,10 @@
-{ stdenv, fetchFromGitHub, gcc, git }:
+{ stdenv, fetchFromGitHub, gcc, git, targetPlatform, buildPlatform }:
+
+let
+  targetPrefix = stdenv.lib.optionalString
+    (targetPlatform != buildPlatform)
+    "${targetPlatform.config}-";
+in
 
 stdenv.mkDerivation rec {
   pname = "m2-planet";
@@ -13,5 +19,5 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ gcc git ];
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" "CC=gcc" ];
+  makeFlags = [ "PREFIX=${placeholder "out"}" "CC=${targetPrefix}gcc" ];
 }
