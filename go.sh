@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-EMULATOR=''
+EMULATOR=${CROSS_EMULATOR:-''}
 set -eux
 
 # Where we put our binaries
