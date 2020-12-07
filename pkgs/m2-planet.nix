@@ -1,13 +1,14 @@
 { stdenv, fetchFromGitHub, gcc, git }:
 
 stdenv.mkDerivation rec {
-  name = "m2-planet";
+  pname = "m2-planet";
+  version = "unstable-2020-12-05";
 
   src = fetchFromGitHub {
     owner = "oriansj";
-    repo = name;
-    rev = "d34ea502ccc9c2a6afc3d420dd8c5c36d7c8c6d9";
-    sha256 = "0mklakrrn7f0n57kfykv46f24d5a0spwx411067rl7qh0hyd404s";
+    repo = pname;
+    rev = "196c66d19ecefdfcb42391447a9916067e77045a";
+    sha256 = "1x9jqwnqshgw70qy1zal852ai38hmlb346jb0mak2fq6j9wblpw8";
   };
 
   nativeBuildInputs = [ gcc git ];
