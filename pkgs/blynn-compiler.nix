@@ -1,4 +1,4 @@
-{ stdenv, lib, help2man, texinfo, mescc-tools, mes-m2, m2-planet }:
+{ stdenv, lib, help2man, texinfo, mescc-tools, mes-m2, m2-planet, hostPlatform, pkgs }:
 
 stdenv.mkDerivation {
   name = "blynn-compiler";
@@ -10,6 +10,8 @@ stdenv.mkDerivation {
   '';
 
   buildPhase = ''
+    substituteInPlace go.sh --replace "./bin/pack_blobs" "${hostPlatform.emulator pkgs} ./bin/pack_blobs"
+    substituteInPlace go.sh --replace "./bin/vm" "${hostPlatform.emulator pkgs} ./bin/vm"
     ./go.sh
   '';
 
