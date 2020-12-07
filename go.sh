@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+EMULATOR=''
 set -eux
 
 # Where we put our binaries
@@ -42,10 +43,10 @@ hex2 -f test/common_x86/ELF-i386-debug.hex2 \
 	-o bin/pack_blobs --exec_enable
 
 # Build blobs
-./bin/pack_blobs -f blob/parenthetically.source -o generated/parenthetically
-./bin/pack_blobs -f blob/exponentially.source -o generated/exponentially
-./bin/pack_blobs -f blob/practically.source -o generated/practically
-./bin/pack_blobs -f blob/singularity.source -o generated/singularity_blob
+$EMULATOR ./bin/pack_blobs -f blob/parenthetically.source -o generated/parenthetically
+$EMULATOR ./bin/pack_blobs -f blob/exponentially.source -o generated/exponentially
+$EMULATOR ./bin/pack_blobs -f blob/practically.source -o generated/practically
+$EMULATOR ./bin/pack_blobs -f blob/singularity.source -o generated/singularity_blob
 
 # Compile to assembly vm.c
 M2-Planet --architecture x86 \
@@ -83,7 +84,7 @@ hex2 -f test/common_x86/ELF-i386-debug.hex2 \
 	-o bin/vm --exec_enable
 
 # Generate raw file needed
-./bin/vm --bootstrap \
+$EMULATOR ./bin/vm --bootstrap \
 		-lf generated/parenthetically \
 		-lf generated/exponentially \
 		-lf generated/practically \
@@ -104,5 +105,5 @@ hex2 -f test/common_x86/ELF-i386-debug.hex2 \
 
 # Make lonely
 cp rts.c generated/lonely.c
-./bin/vm -f lonely.hs -l bin/raw run effectively.hs >> generated/lonely.c
+$EMULATOR ./bin/vm -f lonely.hs -l bin/raw run effectively.hs >> generated/lonely.c
 #TODO Steps to compile lonely.c into bin/lonely
