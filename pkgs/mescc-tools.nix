@@ -1,12 +1,13 @@
-{ stdenv, fetchgit, kaem, git, gcc }:
+{ stdenv, fetchgit, git, gcc }:
 
 stdenv.mkDerivation {
-  name = "mescc-tools";
+  pname = "mescc-tools";
+  version = "unstable-2020-12-05";
 
   src = fetchgit {
     url = "https://git.savannah.nongnu.org/git/mescc-tools.git";
-    rev = "be437350ae1589c202e824ecdb97fe9ac6c470a3 ";
-    sha256 = "0pv61cd0zw2jb09xa30vfmf22vhh2ndjdpl3g88g27c4j4dn1f19";
+    rev = "ee0a38e6adad7e27b79fe308af1a87b96238371f ";
+    sha256 = "1mjvp3y0npq2zrg736jd7cs5rizh6vi0n6cmfvnick2yb28q9vy2";
   };
 
   nativeBuildInputs = [ git gcc ];
@@ -15,7 +16,6 @@ stdenv.mkDerivation {
     mkdir -p $out/bin
     cp bin/* $out/bin
   '';
-  # buildInputs = [ kaem ];
 
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 }
