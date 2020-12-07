@@ -6,10 +6,13 @@ stdenv.mkDerivation {
   nativeBuildInputs = [ help2man texinfo mescc-tools m2-planet mes-m2 ];
 
   postPatch = ''
+    sed -i -E 's:EMULATOR=.*:EMULATOR=$(CROSS_EMULATOR):' go.sh
+    head -10 go.sh
     patchShebangs go.sh
   '';
 
   buildPhase = ''
+    export CROSS_EMULATOR='${hostPlatform.emulator pkgs}'
     ./go.sh
   '';
 
