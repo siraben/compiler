@@ -1,0 +1,48 @@
+diff --git a/effectively.hs b/effectively.hs
+index cca5fa3..b26690a 100644
+--- a/effectively.hs
++++ b/effectively.hs
+@@ -15,6 +15,20 @@
+ -- along with blynn-compiler.  If not, see
+ -- <https://www.gnu.org/licenses/>.
+ -- Effects with IO monad.
++{-# LANGUAGE TupleSections #-}
++{-# LANGUAGE NoMonomorphismRestriction #-}
++{-# LANGUAGE BlockArguments #-}
++module Main where
++import Prelude (Char, Int, String, succ, interact)
++import Data.Char (chr, ord)
++import qualified Prelude
++(*) = (Prelude.*)
++(+) = (Prelude.+)
++(-) = (Prelude.-)
++(/) = Prelude.div
++(%) = Prelude.mod
++instance Eq Char where { (==) x y = if x Prelude.== y then True else False };
++instance Ord Char where { (<=) x y = if x Prelude.<= y then True else False };
+ infixr 9 .;
+ infixl 7 *;
+ infixl 6 + , -;
+@@ -25,7 +39,7 @@ infixl 3 && , <|>;
+ infixl 2 ||;
+ infixr 0 $;
+ class Eq a where { (==) :: a -> a -> Bool };
+-instance Eq Int where { (==) = intEq };
++instance Eq Int where { (==) x y = if x Prelude.== y then True else False };
+ undefined = undefined;
+ ($) f x = f x;
+ id x = x;
+@@ -33,7 +47,7 @@ flip f x y = f y x;
+ (&) x f = f x;
+ data Bool = True | False;
+ class Ord a where { (<=) :: a -> a -> Bool };
+-instance Ord Int where { (<=) = intLE };
++instance Ord Int where { (<=) x y = if x Prelude.<= y then True else False };
+ data Ordering = LT | GT | EQ;
+ compare x y = case x <= y of
+   { True -> case y <= x of
+@@ -856,3 +870,4 @@ compile s = fmaybe (program s) "parse error" \progRest ->
+     flst exs ("int main(){rts_init();rts_reduce(" ++ maybe undefined showInt (mlookup (fst $ last qas) tab) ");return 0;}") $ \_ _ ->
+       concat $ zipWith (\p n -> "EXPORT(f" ++ showInt n ", \"" ++ fst p ++ "\", " ++ showInt n ")\n") exs (upFrom 0)
+   };
++main = interact compile

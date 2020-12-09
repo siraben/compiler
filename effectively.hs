@@ -837,7 +837,9 @@ ffiDefine n ffis = case ffis of
 
 upFrom n = n : upFrom (n + 1);
 zipWith f xs ys = flst xs [] $ \x xt -> flst ys [] $ \y yt -> f x y : zipWith f xt yt;
-
+progLine p r = "prog[" ++ showInt (fst p) "] = " ++ showInt (snd p) (";\n"++r);
+progBody mem = foldr (.) id (map progLine (zipWith (,) (upFrom 0) (snd mem [])));
+rootBody tab = foldr (\p f -> fpair p \x y -> ("root[" ++) . showInt x . ("] = " ++) . maybe undefined showInt (mlookup (snd y) tab) . (";\n" ++) . f) id;
 compile s = fmaybe (program s) "parse error" \progRest ->
   fpair progRest \prog rest -> fneat (untangle prog) \ienv fs typed ffis exs -> case inferDefs ienv fs typed of
   { Left err -> err
