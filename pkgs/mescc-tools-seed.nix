@@ -13,6 +13,7 @@ stdenv.mkDerivation {
     fetchSubmodules = true;
   };
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  doPatchelf = false;
   installPhase = ''
     mkdir -p $out/bin
     cp ./bin/* $out/bin
