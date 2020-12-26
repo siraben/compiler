@@ -197,7 +197,7 @@ mpDivMod xs ys = first (reverse . dropWhile (== 0)) $ go us where
     (lsbs, msbs) = splitAt (ulen - vlen - 1) us
     (ql, qh) = word64Div u1 u0 v1 0
     q0  = if 1 <= qh then (0-1) else ql
-    (q, ds) = foldr const undefined [(q, ds) | q <- iterate (- 1) q0, let (ds, bor) = mpSbb msbs (mpMulWord q vs 0) 0, bor == 0]
+    (q, ds) = foldr const undefined [(q, ds) | q <- iterate (\x -> x - 1) q0, let (ds, bor) = mpSbb msbs (mpMulWord q vs 0) 0, bor == 0]
 
 mpDivScale n = fst $ word64Div 0 1 (n + 1) 0
 
