@@ -89,9 +89,9 @@ hex2 -f test/common_x86/ELF-i386-debug.hex2 \
 ./bin/vm --raw bin/raw_n -pb generated/practically -lf generated/singularity_blob -o bin/raw_o
 ./bin/vm --raw bin/raw_o -pb generated/singularity_blob -lf singularity -o bin/raw_p
 ./bin/vm --raw bin/raw_p -pb singularity -lf semantically -o bin/raw_q
-./bin/vm --raw bin/raw_q -pb semantically -lf stringy -o bin/raw_r
-./bin/vm --raw bin/raw_r -pb stringy -lf binary -o bin/raw_s
-./bin/vm --raw bin/raw_s -pb binary -lf algebraically -o bin/raw_t
+./bin/vm --raw bin/raw_q -pb semantically -lf lispy -o bin/raw_r
+./bin/vm --raw bin/raw_r -pb lispy -lf binary.lisp -o bin/raw_s
+./bin/vm --raw bin/raw_s -pb binary.lisp -lf algebraically -o bin/raw_t
 ./bin/vm --raw bin/raw_t -pb algebraically -lf parity.hs -o bin/raw_u
 ./bin/vm --raw bin/raw_u -pb parity.hs -lf fixity.hs -o bin/raw_v
 ./bin/vm --raw bin/raw_v -pb fixity.hs -lf typically.hs -o bin/raw_w
