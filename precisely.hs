@@ -1719,7 +1719,7 @@ genExport m n = ("void f"++) . showInt n . ("("++)
   . foldl (\s x -> ("app("++) . s . (",app(_NUM,"++) . x . ("))"++)) rt xs
   . (");}\n"++)
   where
-  xs = map ((('x':) .) . showInt) [0..m - 1]
+  xs = map ((('x':) .) . showInt) [0..m]
   rt = ("root["++) . showInt n . ("]"++)
 
 arrCount = \case
