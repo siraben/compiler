@@ -30,14 +30,21 @@ Actions](./.github/workflows/build.yml), showing that only
 [mescc-tools-seed](https://github.com/OriansJ/mescc-tools-seed) is
 needed.
 
-## Building on x86_64-linux
-To build blynn-compiler with Nix without installing anything:
+## Building on x86_64-linux and macOS
+### Using Nix
+To build blynn-compiler without installing anything:
 
 ```ShellSession
-$ nix-build -I nixpkgs=https://github.com/OriansJ/blynn-compiler/archive/master.tar.gz '<nixpkgs>' -A blynn-compiler
+$ nix-build -I nixpkgs=https://github.com/OriansJ/blynn-compiler/archive/master.tar.gz '<nixpkgs>' --argstr system 'x86_64-linux' -A blynn-compiler
 ```
 
-To build it from the Git repository:
+To build it on macOS, make sure you have
+[linuxkit-nix](https://github.com/nix-community/linuxkit-nix)
+installed or an `x86_64-linux` remote builder set up before running
+that command.
+
+### Git repositry
+To build blynn-compiler from the Git repository on Linux or macOS:
 
 ```ShellSession
 $ nix-build -A blynn-compiler # if using Nix
