@@ -16,7 +16,7 @@ jobs:
     - name: Check hash of raw
       run: echo "1427b0a5b47487bf23a42899601d2b86955554a59ba169c303063444ed709ba8 result/share/raw" | sha256sum -c
     - run: cp result/bin/vm vm && cp result/share/raw raw && cp result/bin/precisely precisely
-    - run: ./precisely < test/hello.hs > hello.c && gcc -O2 -o hello hello.c && ./hello > hello.txt
+    - run: ./precisely test/hello.hs hello.c && gcc -O2 -o hello hello.c && ./hello > hello.txt
     - name: Check hash of hello world test
       run: echo "4dca0fd5f424a31b03ab807cbae77eb32bf2d089eed1cee154b3afed458de0dc  hello.txt" | sha256sum -c
     - name: Upload artifacts
