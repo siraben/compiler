@@ -3,14 +3,31 @@ name: Build and test
 on: [push, pull_request]
 
 jobs:
-  build-test:
+  ghc-test:
+    name: Build wrappers with GHC
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.1
     - uses: cachix/install-nix-action@v12
       with:
         nix_path: nixpkgs=channel:nixos-unstable
-    - name: Build
+    - name: Build wrap_parity.hs
+      run: nix-shell -p ghc --run "ghc -O2 site/wrap_parity.hs -o wrap_parity"
+    - name: Build wrap_patty.hs
+      run: nix-shell -p ghc --run "ghc -O2 site/wrap_patty.hs -o wrap_patty"
+    - name: Build wrap_marginally.hs
+      run: nix-shell -p ghc --run "ghc -O2 site/wrap_marginally.hs -o wrap_marginally"
+    - name: Build wrap_crossly.hs
+      run: nix-shell -p ghc --run "ghc -O2 site/wrap_crossly.hs -o wrap_crossly"
+  build-test:
+    name: Build and test blynn-compiler with mescc-tools-seed
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.3.1
+    - uses: cachix/install-nix-action@v12
+      with:
+        nix_path: nixpkgs=channel:nixos-unstable
+    - name: Build blynn-compiler with mescc-tools-seed
       run: nix-build -A blynn-compiler
       timeout-minutes: 20
     - name: Check hash of raw
