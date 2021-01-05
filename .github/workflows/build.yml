@@ -16,11 +16,11 @@ jobs:
     - name: Build wrap_patty.hs
       run: nix-shell -p ghc --run "ghc -O2 site/wrap_patty.hs -o wrap_patty"
     - name: Build wrap_marginally.hs
-      run: nix-shell -p ghc --run "ghc -O2 site/wrap_marginally.hs -o wrap_marginally"
+      run: "gcc -c stub.c && nix-shell -p \"haskellPackages.ghcWithPackages (h: [ h.raw-strings-qq ])\" --run \"ghc -O2 site/wrap_marginally.hs\""
     - name: Build wrap_crossly.hs
-      run: nix-shell -p ghc --run "ghc -O2 site/wrap_crossly.hs -o wrap_crossly"
+      run: "gcc -c stub.c && nix-shell -p \"haskellPackages.ghcWithPackages (h: [ h.raw-strings-qq ])\" --run \"ghc -O2 site/wrap_crossly.hs -o wrap_crossly\""
   build-test:
-    name: Build and test blynn-compiler with mescc-tools-seed
+    name: Build and test with mescc-tools-seed
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.1
