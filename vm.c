@@ -37,8 +37,9 @@
 //CONSTANT BUFMAX 1048576
 #define BUFMAX    1048576
 
-//CONSTANT CELL_SIZE sizeof(unsigned)
 #define CELL_SIZE 1
+//CONSTANT CELL_SIZE sizeof(unsigned)
+
 
 int match(char* a, char* b);
 void file_print(char* s, FILE* f);
