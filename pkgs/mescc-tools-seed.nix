@@ -1,17 +1,17 @@
-{ stdenv, fetchFromGitHub, git }:
+{ stdenvNoCC, fetchFromGitHub }:
 
-stdenv.mkDerivation {
+stdenvNoCC.mkDerivation {
   pname = "mescc-tools-seed";
-  version = "unstable-2020-12-20";
+  version = "unstable-2021-01-09";
 
-  nativeBuildInputs = [ git ];
   src = fetchFromGitHub {
     owner = "oriansj";
     repo = "mescc-tools-seed";
-    rev = "b80accf40023bbf5f6f1d08da59256467bc6f1a0";
-    sha256 = "04nra450njaq40rs196m11nmmf64sf1zjw5ic059hqz49fvmqxz0";
+    rev = "05d8bced32f7ba16597ba46d9cd98a83eaf9e336";
+    sha256 = "10jgma1wi0jysb59vwnc4sxw1sfgkci7w492ymv8nq1pkbnfz0sc";
     fetchSubmodules = true;
   };
+
   makeFlags = [ "PREFIX=${placeholder "out"}" ];
 
   dontStrip = true;
