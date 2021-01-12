@@ -2,13 +2,13 @@
 
 stdenvNoCC.mkDerivation {
   pname = "mescc-tools-seed";
-  version = "unstable-2021-01-09";
+  version = "unstable-2021-01-10";
 
   src = fetchFromGitHub {
     owner = "oriansj";
     repo = "mescc-tools-seed";
-    rev = "05d8bced32f7ba16597ba46d9cd98a83eaf9e336";
-    sha256 = "10jgma1wi0jysb59vwnc4sxw1sfgkci7w492ymv8nq1pkbnfz0sc";
+    rev = "0f549aee03a6d97dd441ec17ea832aa5229f3e77";
+    sha256 = "1gw7g614rcv67wlm7rnl58ndaanl4l9rq29h2x3lqxibw9nsvz5n";
     fetchSubmodules = true;
   };
 
