@@ -10,7 +10,7 @@
   };
 
   outputs = { self, nixpkgs, utils, ... }:
-    utils.lib.eachSystem [ "x86_64-linux" ] (system:
+    utils.lib.eachSystem [ "x86_64-linux" "i686-linux" ] (system:
       let
         overlay = import ./overlay.nix;
         pkgs = import nixpkgs { inherit system; overlays = [ overlay ]; };
