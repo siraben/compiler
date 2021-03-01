@@ -16,7 +16,7 @@
         pkgs = import nixpkgs { inherit system; overlays = [ overlay ]; };
       in {
         inherit overlay;
-        inherit (pkgs) blynn-compiler;
+        packages = pkgs;
         defaultPackage = pkgs.blynn-compiler;
       });
 }
