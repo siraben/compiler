@@ -12,9 +12,11 @@ stdenvNoCC.mkDerivation {
     fetchSubmodules = true;
   };
 
-  makeFlags = [ "PREFIX=${placeholder "out"}" ];
+  dontPatch = true;
+  dontConfigure = true;
+  dontFixup = true;
 
-  dontStrip = true;
+  makeFlags = [ "PREFIX=${placeholder "out"}" ];
 
   installPhase = ''
     mkdir -p $out/bin
