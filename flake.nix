@@ -1,7 +1,7 @@
 {
   description = "blynn-compiler";
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-20.09";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
     flake-compat = {
       url = "github:edolstra/flake-compat";
