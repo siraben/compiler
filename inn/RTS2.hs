@@ -31,7 +31,7 @@ int getchar_shim() {
   return nextCh;
 }
 void errchar(int c) { fputc(c, stderr); }
-void errexit() { fputc('\n', stderr); }
+void errexit() { fputc('\n', stderr); exit(1); }
 |]
 
 libcWasm = [r|
@@ -91,6 +91,9 @@ static u evac(u n) {
   return z;
 }
 
+void errchar(int);
+void errexit();
+
 static void gc() {
   hp = 128;
   u di = hp;
@@ -107,6 +110,16 @@ static void gc() {
   u *tmp = mem;
   mem = altmem;
   altmem = tmp;
+  u top = *sp, used = hp + 8;
+  while (isAddr(top) && used < TOP) {
+    top = mem[top];
+    used++;
+  }
+  if (used >= TOP) {
+    char *s = "heap full";
+    while (*s) errchar(*s++);
+    errexit();
+  }
 }
 
 static inline u app(u f, u x) { mem[hp] = f; mem[hp + 1] = x; return (hp += 2) - 2; }
